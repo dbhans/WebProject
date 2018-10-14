@@ -1,0 +1,66 @@
+{# empty Twig template #}
+{% extends 'base04.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup04.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp04.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient04.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher04.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Client Adress{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> Date </th>
+            <th> Read </th>
+            <th> Client </th>
+            <th> Open </th>
+            <th> Delete </th>
+            </tr>
+            
+           {% for item in AllRecieved %}
+            <tr><td>{{ item.created|date("m/d/Y") }}  
+                </td>
+            <td>{% if item.readed == 1 %}
+                Read
+                {% else %}
+                    Unread
+                  {% endif %}  </td>
+            <td>{% for itema in AllClients %}
+                    {% if itema.id == item.clientid %} {{ itema.firstname }} &nbsp &nbsp  {{ itema.lastname }}{% endif %}
+                {% endfor %}</td> 
+                <td><a href="{{path('Message_E_Open04',{id :item.id })}}"><input type="button"  value="View"></a></td>
+
+                <td><a href="{{path('Delete_Employee_Message04',{idmessage :item.id })}}"><input type="button"  value="Delete"></a></td></tr>
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

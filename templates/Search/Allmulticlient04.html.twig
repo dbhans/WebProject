@@ -1,0 +1,61 @@
+{# empty Twig template #}
+{% extends 'base04.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup04.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp04.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient04.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher04.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Client Adress{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> First name</th>
+            <th> Last name </th>
+            <th> Compagny</th>
+            <th> Meeting</th>
+            <th> Edit </th>
+            </tr>
+            
+            {% for item in Allclient %}
+            <tr><td>{{ item.firstname }}</td>
+            <td>{{ item.lastname }}</td>
+            <td>{% for itema in compag %}
+                    {% if itema.clientid == item.id %} {{ itema.name }}{% endif %}
+                {% endfor %}</td> 
+            <td><a href="{{path('Meeting_New04',{client :item.id })}}"><input type="button" class = "btn btn-lg  bottum" value="New Meeting"></a></td>
+			<td><a href="{{path('Client_editpersonalinfo04',{idclient :item.id })}}"><input type="button" class = "btn btn-lg  bottum" value="Edit"></a></td></tr>
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

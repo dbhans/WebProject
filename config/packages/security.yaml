@@ -1,0 +1,45 @@
+security:
+    # https://symfony.com/doc/current/book/security.html#where-do-users-come-from-user-providers
+    encoders:
+        App\Entity\UserControl: bcrypt
+    providers:
+        #in_memory: { memory: ~ }
+        database_users:
+            entity: { class: App\Entity\UserControl, property: username }
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false           
+            
+        main:
+            # this firewall applies to all URLs
+            pattern: ^/
+            # but the firewall does not require login on every page
+            # denying access is done in access_control or in your controllers
+            anonymous: true
+            
+            # This allows the user to login by submitting a username and password
+            form_login:
+                login_path: security_login
+                check_path: security_login
+                csrf_token_generator: security.csrf.token_manager
+                #csrf_parameter: _csrf_security_token
+                #csrf_token_id: a_private_string
+                default_target_path: All_error
+            logout:
+                # The route name the user can go to in order to logout
+                path: security_logout
+                # The name of the route to redirect to after logging out
+                target: All_Welcome
+            # activate different ways to authenticate
+
+            # http_basic: ~
+            # https://symfony.com/doc/current/book/security.html#a-configuring-how-your-users-will-authenticate
+
+            # form_login: ~
+            # https://symfony.com/doc/current/cookbook/security/form_login_setup.html
+    role_hierarchy:
+        ROLE_CLIENT:     [ROLE_USER]
+        ROLE_ADMIN:      [ROLE_ORGANIZER, ROLE_USER]
+        ROLE_SUPERADMIN: [ROLE_ADMIN]
+      

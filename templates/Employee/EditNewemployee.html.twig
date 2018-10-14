@@ -1,0 +1,98 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Employee{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+ <fieldset>
+    <legend>Personal information</legend>
+  <div class ="row">
+    {{ form_label(form.firstname) }}
+    {{ form_errors(form.firstname) }}
+    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.lastname) }}
+    {{ form_errors(form.lastname) }}
+    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+</div>
+    <div class ="row">
+    {{ form_label(form.sex) }}
+    {{ form_errors(form.sex) }}
+    {{ form_widget(form.sex, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.cellphone) }}
+    {{ form_errors(form.cellphone) }}
+    {{ form_widget(form.cellphone, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.san) }}
+    {{ form_errors(form.san) }}
+    {{ form_widget(form.san, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.birthday) }}
+    {{ form_errors(form.birthday) }}
+    {{ form_widget(form.birthday, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.email) }}
+    {{ form_errors(form.email) }}
+    {{ form_widget(form.email, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.startdate) }}
+    {{ form_errors(form.startdate) }}
+    {{ form_widget(form.startdate, {'attr': {'class': 'form-control'}}) }}
+</div>
+</fieldset>
+<fieldset>
+    <legend>Adress</legend>
+    <div class ="row">
+        {{ form_label(form.country) }}
+        {{ form_errors(form.country) }}
+        {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+    </div>
+
+    <div class ="row">
+        {{ form_label(form.state) }}
+        {{ form_errors(form.state) }}
+        {{ form_widget(form.state, {'attr': {'class': 'form-control'}}) }}
+    </div>
+	<div class ="row">
+        {{ form_label(form.city) }}
+        {{ form_errors(form.city) }}
+        {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class ="row">
+        {{ form_label(form.adress) }}
+        {{ form_errors(form.adress) }}
+        {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class ="row">
+        {{ form_label(form.zipcode) }}
+        {{ form_errors(form.zipcode) }}
+        {{ form_widget(form.zipcode, {'attr': {'class': 'form-control'}}) }}
+    </div>
+</fieldset>    
+{% if is_granted('ROLE_SUPERVISOR') %}
+<a href="{{path('Delete_employee',{idemployee :employeeid})}}"><input type="button"  class = "btn btn-secondary deleted" value="Delete"></a>
+{% endif %}
+{{ form_end(form) }}
+
+{% endblock %}

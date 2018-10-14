@@ -1,0 +1,71 @@
+
+        <!--    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item active">
+                       <a class="nav-link" href="{{path('All_Welcome02')}}">Home <span class="sr-only">(current)</span></a>
+                     </li>
+                    <li class="nav-item ">
+                        &nbsp &nbsp &nbsp &nbsp
+                    </li>-->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Client_New02')}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Client</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('Client_New02')}}">New client</a>
+                            <a class="dropdown-item" href="{{path('Search_AllClient02')}}">All client</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Employee_editNew02',{idemployee:app.user.employeeid})}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Employee</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                                <a class="dropdown-item" href="{{path('Employee_editNew02',{idemployee:app.user.employeeid})}}">Edit Employee</a>
+                        <!--    <a class="dropdown-item" href="{{path('Employee_New02')}}">New Employee</a>
+                            <a class="dropdown-item" href="{{path('Search_AllEmployee02')}}">All Employee</a>-->
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Search_NewClient02')}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Meeting</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('Search_NewClient02')}}">New Meeting</a>
+                             <a class="dropdown-item" href="{{path('Search_AllMeeting02')}}">My Meetings</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Client_personalinfo02')}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Multiple entree Client</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('Client_personalinfo02')}}">New client</a>
+                            <a class="dropdown-item" href="{{path('Search_AllmultiClient02')}}">All client</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Employees_editPersonalinfo02',{idemployee:app.user.employeeid})}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Multiple info Employee</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('Employees_editPersonalinfo02',{idemployee:app.user.employeeid})}}">Personal info</a>
+                        <!--    <a class="dropdown-item" href="{{path('Search_AllmultiEmployee02')}}">All Employee</a>
+                        --></div>
+                    </li>
+					<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('User_Client02')}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">User</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('User_Client02')}}">Create user as a Client</a>
+                            <a class="dropdown-item" href="{{path('security_change_pasword_employee')}}">Update my password</a>
+                            <!--<a class="dropdown-item" href="{{path('User_Employee02')}}">Create user Employee</a>-->
+							<a class="dropdown-item" href="{{path('Search_AllUser02')}}">Manage user</a>
+                        </div>
+                    </li>
+					<li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{{path('Search_Recieved02')}}" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Messages</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdown02">
+                            <a class="dropdown-item" href="{{path('Search_Recieved02')}}">All Recevied</a>
+                            <!--<a class="dropdown-item" href="{{path('User_Employee02')}}">Create user Employee</a>
+							<a class="dropdown-item" href="{{path('Search_AllUser02')}}">Manage user</a>-->
+                        </div>
+                    </li>
+            <!--    </ul>
+                
+              <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+              </form>
+                
+            </div>-->
+ 

@@ -1,0 +1,35 @@
+{% extends 'base01.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup01.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp01.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient01.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher01.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Welcome{% endblock %}
+{% block stylesheets %}
+<style>
+.template{
+	padding :3rem 1.5rem;
+	text-align: center;
+}
+p{
+font-size: 16px;
+font-weight:bold;
+}
+</style>
+{% endblock %}
+{% block body %}
+<h1> Welcome </h1>
+<br><br>
+<p> This is our New Website </p>
+<br>
+<p> It is for education purpuse only </p>
+{% endblock %}

@@ -1,0 +1,65 @@
+{# empty Twig template #}
+{% extends 'base03.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup.03html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp03.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient03.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher03.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Edit Client Compagny{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+<fieldset>
+        <legend>Client Compagny</legend>
+<div class ="row">
+    {{ form_label(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.country) }}
+    {{ form_errors(form.country) }}
+    {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.city) }}
+    {{ form_errors(form.city) }}
+    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.state) }}
+    {{ form_errors(form.state) }}
+    {{ form_widget(form.state, {'attr': {'class': 'form-control'}}) }}
+</div>
+    <div class ="row">
+    {{ form_label(form.adress) }}
+    {{ form_errors(form.adress) }}
+    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.zipcode) }}
+    {{ form_errors(form.zipcode) }}
+    {{ form_widget(form.zipcode, {'attr': {'class': 'form-control'}}) }}
+</div>
+</fieldset>
+    
+{% if is_granted('ROLE_EMPLOYEE') %}
+ <a href="{{path('Delete_Client03',{idclient :idclient})}}"><input type="button" class = "btn btn-secondary deleted" value="Delete">   </a></button>    
+{% endif %}
+
+{{ form_end(form) }}
+{% endblock %}

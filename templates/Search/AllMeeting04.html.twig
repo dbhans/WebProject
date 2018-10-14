@@ -1,0 +1,61 @@
+{# empty Twig template #}
+{% extends 'base04.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup04.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp04.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient04.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher04.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Find Employee{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> Client name</th>
+            <th> Status </th>   
+            <th> Date </th>          
+            <th> Edit </th>
+            <th> Delete </th>
+            </tr>
+            
+            {% for item in AllMeeting %}
+            <tr><td>{{ item.clientname }}</td>
+            <td>{{ item.status }}</td>
+            <td>{{ item.datem|date("m/d/Y") }} </td>
+            <td><a href="{{path('Meeting_edit04',{Meetingid :item.id })}}"><input type="button"  value="Edit"></a></td>
+
+           
+            <td><a href="{{path('Delete_Meeting04',{idmeeting :item.id })}}"><input type="button"  value="Delete"></a></td></tr>
+
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

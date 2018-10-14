@@ -1,0 +1,28 @@
+{# empty Twig template #}
+{% extends 'base01.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup01.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp01.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient01.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher01.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+
+{% block title %}Client{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+
+{{ form_widget(form) }}
+
+
+
+{{ form_end(form) }}
+{% endblock %}

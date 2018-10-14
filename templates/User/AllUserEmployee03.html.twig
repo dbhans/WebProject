@@ -1,0 +1,67 @@
+{# empty Twig template #}
+{% extends 'base03.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup03.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp03.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient03.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher03.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Find Employee{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> First name</th>
+            <th> Last name </th>            
+            <th> Create User</th>
+            </tr>
+            
+            {% for item in UserEmployee %}
+            {% set y = 0 %}
+            {% for itema in AllUser %}
+                {% if item.id == itema.employeeid %}
+                    {% set y = 1 %}
+                {% endif %}
+             {% endfor %}
+                <tr><td>{{ item.firstname }}</td>
+                <td>{{ item.lastname }}</td>
+                {% if y == 1 %}
+                <td><a href="{{path('security_change_pasword',{id :item.id })}}"><input type="button"  value="Edit User"></a>
+                </td></tr>
+            {% else %}
+                <td>                 
+                    <a href="{{path('registration_employee03',{employeeid :item.id })}}"><input type="button"  value="Create User"></a></td></tr>
+            {% endif %}
+            
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

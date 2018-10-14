@@ -1,0 +1,54 @@
+{# empty Twig template #}
+{% extends 'base01.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup01.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp01.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient01.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher01.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Find Employee{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> First name</th>
+            <th> Last name </th>            
+            <th> Edit </th>
+            </tr>
+            
+            {% for item in AllEmployee %}
+            <tr><td>{{ item.firstname }}</td>
+            <td>{{ item.lastname }}</td>
+            <td><a href="{{path('Employee_editNew01',{idemployee :item.id })}}"><input type="button"  value="Edit"></a></td></tr>
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

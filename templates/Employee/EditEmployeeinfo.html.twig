@@ -1,0 +1,67 @@
+{# empty Twig template #}
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Employee Personal information{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+ <fieldset>
+<legend>Personal information</legend>
+<div class ="row">
+    {{ form_label(form.firstname) }}
+    {{ form_errors(form.firstname) }}
+    {{ form_widget(form.firstname, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.lastname) }}
+    {{ form_errors(form.lastname) }}
+    {{ form_widget(form.lastname, {'attr': {'class': 'form-control'}}) }}
+</div>
+    <div class ="row">
+    {{ form_label(form.sex) }}
+    {{ form_errors(form.sex) }}
+    {{ form_widget(form.sex, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.cellphone) }}
+    {{ form_errors(form.cellphone) }}
+    {{ form_widget(form.cellphone, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.san) }}
+    {{ form_errors(form.san) }}
+    {{ form_widget(form.san, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.birthday) }}
+    {{ form_errors(form.birthday) }}
+    {{ form_widget(form.birthday, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.birthday) }}
+    {{ form_errors(form.birthday) }}
+    {{ form_widget(form.birthday, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.startdate) }}
+    {{ form_errors(form.startdate) }}
+    {{ form_widget(form.startdate, {'attr': {'class': 'form-control'}}) }}
+</div>
+        </fieldset>
+
+{{ form_end(form) }}
+{% endblock %}

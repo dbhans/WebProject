@@ -1,0 +1,151 @@
+{% extends 'base02.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup02.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp02.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient02.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher02.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}Day meeting{% endblock %}
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block body %}
+    <table>
+        <tr>
+            <th>
+                hour
+            </th>
+            <th>
+                Meeting
+            </th>
+        </tr>
+        <tr>
+            <td>
+                9:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:9 })}}"><input type="button" value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                10:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:10 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                11:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:11 })}}"><input type="button" value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                12:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:12 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                13:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:13 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                14:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:14 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                15:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:15 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                16:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:16 })}}"><input type="button" value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                17:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:17 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                18:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:18 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                19:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:19 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                20:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:20 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                21:00
+            </td>
+            <td>
+                 <a href="{{path('Meeting_add02',{client :clientid, time:21 })}}"><input type="button"  value="Delete">   </a>
+            </td>
+        </tr>
+         
+        
+    </table>
+{% endblock %}

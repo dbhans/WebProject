@@ -1,0 +1,45 @@
+{# empty Twig template #}
+{% extends 'base03.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup03.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp03.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient03.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher03.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}New Meeting {% endblock %}
+
+{% block body %}
+    
+    <div class ="row">
+        <table>
+            <tr>
+                <td> Message send to :</td>
+            </tr> 
+            
+            <tr>
+                <td> {{Employee.firstname}}   {{Employee.lastname}} </td>
+            </tr> 
+            
+        </table>
+    </div>
+    <br><br>
+{{ form_start(form) }}
+
+<div class ="row">
+    {{ form_label(form.message) }}
+    {{ form_errors(form.message) }}
+    {{ form_widget(form.message, {'attr': {'class': 'form-control ', "rows":"4", "cols":"50"}}) }}
+</div>
+
+
+
+{{ form_end(form) }}
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+
+{% block title %}Welcome{% endblock %}
+{% block stylesheets %}
+<style>
+.template{
+    padding :3rem 1.5rem;
+    text-align: center;
+}
+p{
+font-size: 16px;
+font-weight:bold;
+}
+</style>
+{% endblock %}
+{% block body %}
+<p> The main page</p>
+<br>
+<br>
+<h1> <a href="{{path('All_Welcome')}}">Welcome </a>  </h1>
+<br><br>
+<p> Path for different error </p>
+<br>
+<br>
+<h1> <a href="{{path('All_Welcome01')}}">Welcome 1 </a>  </h1>
+<br>
+<br>
+<h1> <a href="{{path('All_Welcome02')}}">Welcome 2 </a>  </h1>
+<br>
+<br>
+<h1> <a href="{{path('All_Welcome03')}}">Welcome 3 </a>  </h1>
+<br>
+<br>
+<h1> <a href="{{path('All_Welcome04')}}">Welcome 4 </a>  </h1>
+<br>
+<br>
+
+{% endblock %}

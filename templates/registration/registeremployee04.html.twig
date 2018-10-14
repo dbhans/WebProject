@@ -1,0 +1,27 @@
+{# templates/registration/register.html.twig #}
+{% extends 'base04.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup04.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp04.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient04.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher04.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}Client Registration {% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+    {{ form_row(form.username, {'attr': {'class': 'form-control'}}) }}
+    {#{ form_row(form.email, {'attr': {'class': 'form-control'}}) }#}
+    {{ form_row(form.plainPassword.first, {'attr': {'class': 'form-control'}}) }}
+    {{ form_row(form.plainPassword.second, {'attr': {'class': 'form-control'}}) }}
+	{{ form_row(form.role, {'attr': {'class': 'form-control'}}) }}
+    <button class='btn btn-lg btn-primary bottum' type="submit">Register</button>
+{{ form_end(form) }}
+{% endblock %}

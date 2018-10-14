@@ -1,0 +1,59 @@
+{# empty Twig template #}
+{% extends 'base02.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup02.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp02.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient02.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher02.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %} Message {% endblock %}
+{% block stylesheets %} 
+<style>
+    td,label {
+
+        font-size: 25px;
+     }
+    </style>
+{% endblock %}
+{% block body %}
+    
+    <div class ='row'>
+        <table>
+            <tr>
+                <td> Employee name :</td>
+                <td> {{Employee.firstname}} </td>            
+                <td> {{Employee.lastname}} </td>
+            </tr> 
+            <tr>
+                <td> Client name :</td>
+                <td> {{  Client.firstname and Client.lastname}} </td>
+            </tr>
+            <tr>
+                <td> Sent :</td>
+                <td> {{Message.created|date("m/d/Y")}} </td>            
+            </tr>
+            <tr>{% if is_granted('ROLE_CLIENT') %}				
+                <td> Status :</td>
+                <td>{% if Message.readed == 1 %}
+						Read
+					{% else %}
+						Unread
+                    {% endif %}  
+                </td>  
+                {% endif %}          
+            </tr>
+            <tr>				
+                <td> <label> Message :</label></td>
+                <td><textarea row="300" col="100" style=" font-size: 25px;"> {{Message.message}} </textarea>	</td>          
+            </tr>
+        </table>
+    </div>
+{% endblock %}

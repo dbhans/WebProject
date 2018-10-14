@@ -1,0 +1,154 @@
+{% extends 'base.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Day meeting{% endblock %}
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block nav %} {{% include 'Nav/FullNav.html.twing' %}}  {% endblock %}
+{% block body %}
+    <table>
+        <tr>
+            <th>
+                hour
+            </th>
+            <th>
+                Meeting
+            </th>
+        </tr>
+        <tr>
+            <td>
+                9:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:9 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                10:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:10 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                11:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:12 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                12:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:12 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                13:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:13 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                14:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:14 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                15:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:15 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                16:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:16 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                17:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:17 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                18:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:18 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                19:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:19 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                20:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:20 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         <tr>
+            <td>
+                21:00
+            </td>
+            <td>
+                <button > <a href="{{path('Meeting_New',{client :item.id, time:21 })}}">Add a new meeting</a></button>
+            </td>
+        </tr>
+         
+        
+    </table>
+
+{% endblock %}

@@ -1,0 +1,63 @@
+{# empty Twig template #}
+{% extends 'base01.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup01.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp01.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient01.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher01.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block title %}Client Compagny{% endblock %}
+
+{% block body %}
+{{ form_start(form) }}
+ <fieldset>
+    <legend>Client information</legend>
+<div class ="row">
+    {{ form_label(form.name) }}
+    {{ form_errors(form.name) }}
+    {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.description) }}
+    {{ form_errors(form.description) }}
+    {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.country) }}
+    {{ form_errors(form.country) }}
+    {{ form_widget(form.country, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.state) }}
+    {{ form_errors(form.state) }}
+    {{ form_widget(form.state, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.city) }}
+    {{ form_errors(form.city) }}
+    {{ form_widget(form.city, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.adress) }}
+    {{ form_errors(form.adress) }}
+    {{ form_widget(form.adress, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+    {{ form_label(form.zipcode) }}
+    {{ form_errors(form.zipcode) }}
+    {{ form_widget(form.zipcode, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+</fieldset>
+
+{{ form_end(form) }}
+{% endblock %}

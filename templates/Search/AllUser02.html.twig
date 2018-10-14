@@ -1,0 +1,67 @@
+{# empty Twig template #}
+{% extends 'base02.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup02.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp02.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient02.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher02.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+
+{% block stylesheets %}
+<style>
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+}
+</style>{% endblock %}
+{% block title %}Find Employee{% endblock %}
+
+{% block body %}
+    <div>
+        <table>
+            <tr>
+            <th> Username</th>
+            <!--<th> Email </th>-->
+			<th> Role </th>             
+            <th> Edit </th>
+            </tr>
+            
+            {% for item in AllUser %}
+            {% if is_granted('ROLE_SUPERVISOR')  %}
+                <tr><td>{{ item.username }}</td>
+                 <!--<td>{{ item.email }}</td>-->
+			    <td>{{ item.roles[0] }}</td>
+                <td><a href="{{path('security_change_pasword',{id :item.id })}}"><input type="button"  value="Edit"></a></td></tr>
+
+            {% elseif is_granted('ROLE_EMPLOYEE') and (item.roles[0] == 'ROLE_CLIENT') %}
+                <tr><td>{{ item.username }}</td>
+                <!-- <td>{{ item.email }}</td>-->
+                <td>{{ item.roles[0] }}</td>
+                <td><a href="{{path('security_change_pasword',{id :item.id })}}"><input type="button"  value="Edit"></a></td></tr>
+
+                   
+                {% endif %}
+            {% endfor %}
+           
+        </table>
+    </div>
+
+{% endblock %}

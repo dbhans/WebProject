@@ -1,0 +1,64 @@
+{# empty Twig template #}
+{% extends 'base03.html.twig' %}
+
+{% block nav %}
+    {% if is_granted('ROLE_SUPERVISOR') %}
+        {{ include('Nav/NavSup03.html.twig') }}
+    {% elseif is_granted('ROLE_EMPLOYEE') %}
+        {{ include('Nav/NavEmp03.html.twig') }}
+    {% elseif is_granted('ROLE_CLIENT') %}
+        {{ include('Nav/NavClient03.html.twig') }}
+    {% elseif is_granted('ROLE_TEACHER') %}
+        {{ include('Nav/NavTeacher03.html.twig') }}
+    {% endif %}
+{% endblock %}
+
+{% block title %}New Meeting {% endblock %}
+
+{% block body %}
+{{ form_start(form, {'attr': {'class': 'form-signin'}}) }}
+
+<div class ="row">
+    {{ form_label(form.clientname) }}
+    {{ form_errors(form.clientname) }}
+    {{ form_widget(form.clientname, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.status) }}
+    {{ form_errors(form.status) }}
+    {{ form_widget(form.status, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.datem) }}
+    {{ form_errors(form.datem) }}
+    {{ form_widget(form.datem, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.time) }}
+    {{ form_errors(form.time) }}
+    {{ form_widget(form.time, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.information) }}
+    {{ form_errors(form.information) }}
+    {{ form_widget(form.information, {'attr': {'class': 'form-control'}}) }}
+</div>
+
+<div class ="row">
+    {{ form_label(form.note) }}
+    {{ form_errors(form.note) }}
+    {{ form_widget(form.note, {'attr': {'class': 'form-control'}}) }}
+</div>
+<div class ="row">
+        <button type="submit" id="meetings_save" name="meetings[save]" class="btn btn-lg btn-primary bottum">Update</button>
+        <a href="{{path('Meeting_Progress03',{Meetingid :Meetingid })}}"><input type="button"  value="In Progress"></a>
+        <a href="{{path('Meeting_Close03',{Meetingid :Meetingid })}}"><input type="button"  value="Close" class = "btn btn-secondary bottum " style="float: right;"></a>
+</div>
+
+
+{{ form_end(form) }}
+{% endblock %}
